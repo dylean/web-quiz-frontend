@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, message } from 'antd';
-import { EllipsisOutlined } from '@ant-design/icons';
+import { Card, message, Row, Col } from 'antd';
+import { PlusCircleOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 import axios from 'axios'
 
@@ -22,21 +22,26 @@ class Home extends Component {
 
     render() {
         return (<div>
-            {
-                this.state.data.map((cur, index) => (
-                    <Card
-                        key={index}
-                        hoverable
-                        style={{ width: 200 }}
-                        cover={<img alt="example" src={cur.goodsUrl} />}
-                        actions={
-                            [<EllipsisOutlined key="ellipsis" onClick={() => this.addToCart(cur.id)} />]
-                        }
-                    >
-                        <Meta title={cur.goodsName} description={`单价：${cur.price}元/${cur.unit}`} />
-                    </Card>
+            <Row>
+                {this.state.data.map((cur, index) => (
+                    <Col span={8}>
+                        <Card
+                            key={index}
+                            hoverable
+                            style={{ width: 200 }}
+                            cover={<img alt="example" src={cur.goodsUrl} />}
+                            actions={
+                                [<PlusCircleOutlined key="plus" onClick={() => this.addToCart(cur.id)} />]
+                            }
+                        >
+                            <Meta title={cur.goodsName} description={`单价：${cur.price}元/${cur.unit}`} />
+                        </Card>
+                    </Col>
+
                 ))
-            }
+                }
+            </Row>
+
 
 
         </div>);
