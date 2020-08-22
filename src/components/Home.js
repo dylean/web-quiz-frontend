@@ -15,8 +15,8 @@ class Home extends Component {
         })
     }
 
-    addToCart = () => {
-        console.log('click');
+    addToCart = (id) => {
+        axios.post(`http://localhost:8080/order/${id}`)
     }
 
     render() {
@@ -29,7 +29,7 @@ class Home extends Component {
                         style={{ width: 200 }}
                         cover={<img alt="example" src={cur.goodsUrl} />}
                         actions={
-                            [<EllipsisOutlined key="ellipsis" onClick={this.addToCart} />]
+                            [<EllipsisOutlined key="ellipsis" onClick={() => this.addToCart(cur.id)} />]
                         }
                     >
                         <Meta title={cur.goodsName} description={`单价：${cur.price}元/${cur.unit}`} />
