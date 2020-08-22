@@ -22,8 +22,9 @@ class Home extends Component {
     render() {
         return (<div>
             {
-                this.state.data.map(cur => (
+                this.state.data.map((cur, index) => (
                     <Card
+                        key={index}
                         hoverable
                         style={{ width: 200 }}
                         cover={<img alt="example" src={cur.goodsUrl} />}
