@@ -10,8 +10,7 @@ const Goods = () => {
         axios.post('http://localhost:8080/goods', values)
             .then(() => {
                 message.success('添加物品成功')
-
-                browserHistory.push('/')
+                form.resetFields()
             })
             .catch(err => message.error("名称已存在"))
     };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'antd';
+import { Card, message } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 import axios from 'axios'
@@ -15,8 +15,9 @@ class Home extends Component {
         })
     }
 
-    addToCart = (id) => {
-        axios.post(`http://localhost:8080/order/${id}`)
+    addToCart = async (id) => {
+        await axios.post(`http://localhost:8080/order/${id}`)
+        message.success('添加成功')
     }
 
     render() {
